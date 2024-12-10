@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_dates",
+  "info": {
+    "displayName": "Dates",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "date"
+    }
+  }
+}

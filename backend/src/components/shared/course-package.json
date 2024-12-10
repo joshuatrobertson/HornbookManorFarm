@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_course_packages",
+  "info": {
+    "displayName": "CoursePackage"
+  },
+  "options": {},
+  "attributes": {
+    "number_of_classes": {
+      "type": "integer"
+    },
+    "price": {
+      "type": "decimal"
+    }
+  }
+}

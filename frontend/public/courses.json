@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Christmas Wreath Making Workshops",
+    "description": "Make beautiful wreaths in this 2 hour workshop Make beautiful wreaths in this 2 hour workshop Make beautiful wreaths in this 2 hour workshop",
+    "imageUrl": "https://hornbrookmanor.co.uk/cdn/shop/files/8184A5F4-8440-4D0D-9FA0-EE5EF6030B9F_1_105_c.jpg?v=1719844244",
+    "imageDesc": "a nice garden",
+    "uploadDate": "2024-11-28T12:00:00Z",
+    "pricingTiers": [
+      { "courses": 1, "price": "£50" }
+      ],
+    "featured": true
+  },
+  {
+    "id": 2,
+    "name": "Yoga Retreat",
+    "description": "Relax and rejuvenate with a peaceful yoga retreat Relax and rejuvenate with a peaceful yoga retreat Relax and rejuvenate with a peaceful yoga retreat",
+    "imageUrl": "https://hornbrookmanor.co.uk/cdn/shop/files/8184A5F4-8440-4D0D-9FA0-EE5EF6030B9F_1_105_c.jpg?v=1719844244",
+    "imageDesc": "Yoga retreat",
+    "uploadDate": "2024-11-10T12:00:00Z",
+    "pricingTiers": [
+      { "courses": 1, "price": "£50" },
+      { "courses": 10, "price": "£400" }
+    ],
+    "featured": true
+  },
+  {
+    "id": 3,
+    "name": "Cooking Masterclass",
+    "description": "Learn to cook like a pro in this 3 hour class Learn to cook like a pro in this 3 hour class Learn to cook like a pro in this 3 hour class",
+    "imageUrl": "https://hornbrookmanor.co.uk/cdn/shop/files/8184A5F4-8440-4D0D-9FA0-EE5EF6030B9F_1_105_c.jpg?v=1719844244",
+    "imageDesc": "cooking class",
+    "uploadDate": "2024-11-20T12:00:00Z",
+    "pricingTiers": [
+      { "courses": 1, "price": "£50" },
+      { "courses": 10, "price": "£400" }
+    ],
+    "price": "£30",
+    "dates": [
+      {
+        "date": "05-01-25"
+      },
+      {
+        "date": "12-01-25"
+      },
+      {
+        "date": "13-01-25"
+      }
+    ],
+    "featured": true
+  }
+]
