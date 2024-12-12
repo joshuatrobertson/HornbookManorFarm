@@ -43,12 +43,15 @@
       "repeatable": true,
       "component": "shared.dates"
     },
-    "type": {
+    "product_type": {
       "type": "enumeration",
       "enum": [
-        "normal",
-        "featured"
+        "course",
+        "voucher"
       ]
+    },
+    "featured": {
+      "type": "boolean"
     }
   }
 }

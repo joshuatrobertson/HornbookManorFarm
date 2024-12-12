@@ -1,16 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch.js";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/CartReducer.js";
 
 const Course = () => {
     const { id } = useParams();  // Extract 'id' from the URL
     const [selectedClasses, setSelectedClasses] = useState(1);  // State to track selected number of classes
     const [selectedDate, setSelectedDate] = useState("");  // State to track selected date
-
+    const [quantity, setQuantity] = useState(1);
+    const [showModal, setShowModal] = useState(false);  // State for showing modal
     const { data, loading, error } = useFetch(`/courses/${id}?populate=*`);
+    const dispatch = useDispatch();
 
-    console.log(data?.image?.url);
+    // Handle adding to cart
+    const handleAddToCart = () => {
+        // Check if required fields are selected only if they exist in the course
+        const hasDate = data.available_dates?.length > 0;
+        const hasClasses = data.pricing_tiers?.length > 1;
 
+        if ((hasClasses && !selectedClasses) || (hasDate && !selectedDate)) {
+            setShowModal(true);  // Show pop-up if any required field is missing
+            return;
+        }
+
+        const variation = {
+            id: data.id, // Base product ID
+            selectedClasses: selectedClasses, // Selected number of classes if available
+            selectedDate: selectedDate, // Selected date if available
+            quantity: quantity || 1, // Default to 1 or whatever quantity is selected
+            price: getPrice(),
+            name: data.name,
+            description: data.description,
+            image: data.image.url,
+            imageDescription: data.image_description,
+        };
+
+        console.log("Dispatching addToCart with variation:", variation);
+        dispatch(addToCart(variation));
+    };
 
     // Get the price based on the selected number of classes
     const getPrice = () => {
@@ -44,14 +72,30 @@ const Course = () => {
     if (!data) return <div>Loading...</div>;  // Show loading while the course is fetched
 
     return (
-        <div className="p-6 max-w-screen-xl mx-auto mb-40">
+        <div className="p-6 max-w-screen-xl mx-auto mb-10 sm:mb-20">
+            {/* Modal for missing selection */}
+            {showModal && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                    <div className="bg-white p-6 rounded-md shadow-lg">
+                        <h2 className="text-xl font-semibold mb-4">Please make your selections</h2>
+                        <p className="text-gray-600">You need to select both the number of classes and a date before adding the course to your basket.</p>
+                        <button
+                            className="mt-4 px-6 py-2 bg-primary text-white rounded-md"
+                            onClick={() => setShowModal(false)}
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
+
             {/* Course Details */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                     <img
-                        src={data?.image ? `${import.meta.env.VITE_BACKEND_URL}${data.image.url}` : "/placeholder-image.png"}
-                        alt={data?.image_description || "No description available"}
                         className="w-full h-auto object-cover rounded-md"
+                        src={`${import.meta.env.VITE_BACKEND_URL}${data?.image?.url}`}
+                        alt={data.image_description}
                     />
                 </div>
                 <div>
@@ -100,7 +144,7 @@ const Course = () => {
                     </div>
 
                     {/* Add to Basket Button */}
-                    <button className="px-6 py-3 bg-primary hover:opacity-90 text-white rounded-md">
+                    <button onClick={handleAddToCart} className="px-6 py-3 bg-primary hover:opacity-90 text-white rounded-md">
                         Add to Basket
                     </button>
                 </div>

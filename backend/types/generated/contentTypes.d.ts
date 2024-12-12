@@ -386,6 +386,7 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.String & Schema.Attribute.Required;
+    featured: Schema.Attribute.Boolean;
     image: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     image_description: Schema.Attribute.Text;
@@ -398,8 +399,8 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     pricing_tiers: Schema.Attribute.Component<'shared.course-package', true> &
       Schema.Attribute.Required;
+    product_type: Schema.Attribute.Enumeration<['course', 'voucher']>;
     publishedAt: Schema.Attribute.DateTime;
-    type: Schema.Attribute.Enumeration<['normal', 'featured']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -439,6 +440,7 @@ export interface ApiNewsletterNewsletter extends Struct.SingleTypeSchema {
 export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   collectionName: 'orders';
   info: {
+    description: '';
     displayName: 'Order';
     pluralName: 'orders';
     singularName: 'order';
@@ -450,13 +452,9 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    customer_email: Schema.Attribute.String;
-    customer_name: Schema.Attribute.String & Schema.Attribute.Required;
-    customer_number: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
       Schema.Attribute.Private;
-    product_id: Schema.Attribute.String;
     products: Schema.Attribute.JSON & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     stripe_id: Schema.Attribute.Text & Schema.Attribute.Required;

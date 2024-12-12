@@ -11,7 +11,7 @@ import Footer from "./components/Footer.jsx";
 import AboutPage from "./pages/about/AboutPage.jsx";
 import Course from "./pages/courses/Course.jsx";
 import CoursesPage from "./pages/courses/CoursesPage.jsx";
-import Cart from "./pages/cart/Cart.jsx";
+import Cart from "./components/Cart.jsx";
 
 const Layout = () => {
     return (

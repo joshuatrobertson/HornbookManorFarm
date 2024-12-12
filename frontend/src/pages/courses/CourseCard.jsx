@@ -10,6 +10,7 @@ const CourseCard = ({item}) => {
         return currentDate - uploadDate <= twoWeeksInMs;
     };
 
+
     return (
         <Link to={`/courses/${item.documentId}`} className="relative flex flex-col mx-4 w-80 bg-white rounded-lg overflow-hidden shadow-md h-full">
             {/* Just Added Badge */}

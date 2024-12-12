@@ -4,33 +4,21 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "Order"
+    "displayName": "Order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "customer_email": {
-      "type": "string"
-    },
     "stripe_id": {
       "type": "text",
       "required": true
     },
-    "product_id": {
-      "type": "string"
-    },
     "products": {
       "type": "json",
       "required": true
-    },
-    "customer_name": {
-      "type": "string",
-      "required": true
-    },
-    "customer_number": {
-      "type": "string"
     }
   }
 }
